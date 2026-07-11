@@ -19,19 +19,19 @@ https://groweasy-ai-csv-importer-fegz.onrender.com
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/HomePage.png)
+![Home Page](HomePage.png)
 
 ### Dark Theme
-![Dark Theme](screenshots/DarkTheme.png)
+![Dark Theme](DarkTheme.png)
 
 ### CSV Preview
-![Preview](screenshots/Preview.png)
+![Preview](Preview.png)
 
 ### Imported CRM Records
-![Imported Records](screenshots/ImportedRecords.png)
+![Imported Records](ImportedRecords.png)
 
 ### AI Assistant Chatbot
-![Chatbot](screenshots/Chatbot.png)
+![Chatbot](Chatbot.png)
 
 ---
 
