@@ -1,91 +1,233 @@
 # GrowEasy AI CSV Importer
 
-## Project Overview
+GrowEasy AI CSV Importer is an AI-powered CSV importer built to transform messy, inconsistent CSV files into clean GrowEasy CRM-ready records. It uses Gemini AI to automatically map unpredictable CSV headers and values into a structured CRM format, paired with a modern responsive frontend, a stateless backend, and a production-ready architecture suitable for real-world deployment.
 
-GrowEasy AI CSV Importer is a stateless AI-powered CSV importer that converts CSV files with varying headers and layouts into GrowEasy CRM-ready lead records. The frontend lets users upload, preview, confirm, process, review, and download results. The backend parses CSV files, sends records to Gemini in batches, validates CRM output, and returns structured JSON.
+This repository is an assignment submission for the Software Developer Intern position at GrowEasy AI.
 
-## Features
+---
 
-- Drag and drop CSV upload
-- File picker upload
-- Local CSV preview before AI processing
-- Responsive preview and result tables with sticky headers
-- Confirm-before-import workflow
-- Gemini-powered CRM field mapping
-- Batch processing with retries
-- Imported and skipped record summaries
-- Results CSV and JSON download
-- Dark mode
-- AI assistant chatbot
+## Live Demo
 
-## Tech Stack
+Frontend:  
+https://groweasy-ai-csv-importer-pearl.vercel.app
 
-- Frontend: Next.js, React, CSS Modules, PapaParse
-- Backend: Node.js, Express, Multer, PapaParse
-- AI: Gemini API
-- Database: None, stateless processing
+Backend:  
+https://groweasy-ai-csv-importer-fegz.onrender.com
 
-## Installation
-
-Install frontend dependencies:
-
-```bash
-cd frontend
-npm install
-```
-
-Install backend dependencies:
-
-```bash
-cd backend
-npm install
-```
-
-## Environment Variables
-
-Frontend `.env.local`:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001/api
-```
-
-Backend `.env`:
-
-```env
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-PORT=3001
-NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
-MAX_FILE_SIZE=20971520
-BATCH_SIZE=20
-BATCH_TIMEOUT=30000
-MAX_RETRIES=2
-RATE_LIMIT_WINDOW=900000
-RATE_LIMIT_MAX_REQUESTS=100
-```
-
-## Run Frontend
-
-```bash
-cd frontend
-npm run dev
-```
-
-The frontend runs on `http://localhost:3000`.
-
-## Run Backend
-
-```bash
-cd backend
-npm run dev
-```
-
-The backend runs on `http://localhost:3001`.
-
-## Deployment
-
-Set production environment variables for both apps before deployment. Configure `NEXT_PUBLIC_API_URL` to point to the deployed backend API and configure `FRONTEND_URL` on the backend to the deployed frontend origin. The frontend can be deployed to Vercel or any Next.js-compatible host. The backend can be deployed to Railway, Render, or any Node.js-compatible host.
+---
 
 ## Screenshots
 
-Screenshots can be added here after deployment.
+### Home Page
+![Home Page](screenshots/HomePage.png)
+
+### Dark Theme
+![Dark Theme](screenshots/DarkTheme.png)
+
+### CSV Preview
+![Preview](screenshots/Preview.png)
+
+### Imported CRM Records
+![Imported Records](screenshots/ImportedRecords.png)
+
+### AI Assistant Chatbot
+![Chatbot](screenshots/Chatbot.png)
+
+---
+
+## Features
+
+- [x] AI Powered CRM Field Mapping
+- [x] Gemini AI Integration
+- [x] Supports Messy CSV Files
+- [x] Drag & Drop Upload
+- [x] File Picker Upload
+- [x] Local CSV Preview
+- [x] Sticky Table Headers
+- [x] Responsive Design
+- [x] Batch Processing
+- [x] Retry Mechanism
+- [x] Import Summary
+- [x] Download CSV
+- [x] Download JSON
+- [x] AI Assistant Chatbot
+- [x] Dark / Light Theme
+- [x] Toast Notifications
+- [x] Error Handling
+- [x] Loading States
+- [x] Production Deployment
+
+---
+
+## Tech Stack
+
+**Frontend**
+
+- Next.js
+- React
+- CSS Modules
+- PapaParse
+
+**Backend**
+
+- Node.js
+- Express.js
+- Multer
+- PapaParse
+
+**AI**
+
+- Google Gemini API
+
+**Deployment**
+
+- Vercel
+- Render
+
+---
+
+## Project Architecture
+
+```text
+frontend/
+backend/
+screenshots/
+```
+
+The `frontend/` application provides the user-facing CSV upload experience, local preview, import confirmation flow, CRM results table, downloads, theme support, and AI assistant chatbot.
+
+The `backend/` service handles CSV uploads, parsing, batch processing, Gemini AI field mapping, CRM validation, retry logic, and stateless API responses.
+
+The `screenshots/` directory contains the visual assets used in this README to showcase the application.
+
+---
+
+## Application Workflow
+
+1. Upload CSV
+
+↓
+
+2. Preview CSV
+
+↓
+
+3. Confirm Import
+
+↓
+
+4. Gemini AI Mapping
+
+↓
+
+5. CRM Validation
+
+↓
+
+6. Results
+
+↓
+
+7. Download CSV / JSON
+
+---
+
+## CRM Fields Extracted
+
+| Field |
+| --- |
+| created_at |
+| name |
+| email |
+| country_code |
+| mobile_without_country_code |
+| company |
+| city |
+| state |
+| country |
+| lead_owner |
+| crm_status |
+| crm_note |
+| data_source |
+| possession_time |
+| description |
+
+---
+
+## Local Setup
+
+**Frontend**
+
+```bash
+npm install
+npm run dev
+```
+
+**Backend**
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## Environment Variables
+
+**Frontend**
+
+```env
+NEXT_PUBLIC_API_URL=
+```
+
+**Backend**
+
+```env
+GEMINI_API_KEY=
+PORT=
+FRONTEND_URL=
+```
+
+No real API keys are included in this repository. Configure production secrets directly in the hosting provider environment settings.
+
+---
+
+## Deployment
+
+The frontend is deployed on Vercel.
+
+The backend is deployed on Render.
+
+Gemini API access is configured securely using environment variables, keeping secrets outside the codebase while allowing the deployed backend to perform AI-powered CRM mapping.
+
+---
+
+## Assignment Requirements Covered
+
+- [x] CSV Upload
+- [x] Preview
+- [x] AI Processing
+- [x] Gemini Mapping
+- [x] Responsive UI
+- [x] Sticky Tables
+- [x] Downloads
+- [x] Dark Mode
+- [x] Chatbot
+- [x] Batch Processing
+- [x] Retry Logic
+- [x] Error Handling
+- [x] Stateless Backend
+
+---
+
+## Future Improvements
+
+- Authentication
+- CSV History
+- Export to Excel
+- Multi-language Support
+- Streaming Imports
+- Admin Dashboard
+- Analytics
+
+---
