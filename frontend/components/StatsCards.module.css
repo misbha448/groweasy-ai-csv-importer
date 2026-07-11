@@ -1,0 +1,134 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.card {
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.cardContent {
+  min-height: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  background:
+    linear-gradient(145deg, var(--primary-soft), transparent 52%),
+    var(--surface);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover .cardContent {
+  transform: translateY(-3px);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.text {
+  min-width: 0;
+}
+
+.label {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.value {
+  margin: 0;
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cardContent.primary {
+  border-top: 3px solid var(--primary);
+}
+
+.cardContent.primary .value {
+  color: var(--primary);
+}
+
+.cardContent.success {
+  border-top: 3px solid var(--success);
+}
+
+.cardContent.success .icon {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.cardContent.success .value {
+  color: var(--success);
+}
+
+.cardContent.warning {
+  border-top: 3px solid var(--warning);
+}
+
+.cardContent.warning .icon {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.cardContent.warning .value {
+  color: var(--warning);
+}
+
+.cardContent.info {
+  border-top: 3px solid var(--primary);
+}
+
+.cardContent.accent {
+  border-top: 3px solid var(--accent);
+}
+
+.cardContent.accent .icon {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.cardContent.accent .value {
+  color: var(--accent);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardContent {
+    min-height: 124px;
+  }
+
+  .value {
+    font-size: 1.65rem;
+  }
+}

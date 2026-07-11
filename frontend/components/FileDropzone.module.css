@@ -1,0 +1,222 @@
+.dropzone {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 56px var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, var(--surface-raised), var(--surface-muted)),
+    radial-gradient(circle at 50% 0%, var(--primary-soft), transparent 36%);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base), background var(--transition-base);
+  pointer-events: auto;
+}
+
+.dropzone::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  pointer-events: none;
+}
+
+.dropzone:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.dropzone.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 5px var(--primary-soft), var(--shadow-xl);
+  animation: borderPulse 900ms ease-in-out infinite alternate;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  pointer-events: auto;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 6px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  box-shadow: var(--shadow-glow);
+  animation: floatIcon 2.6s ease-in-out infinite;
+}
+
+.title {
+  max-width: 640px;
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.fileInput {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.browseButton {
+  pointer-events: auto;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  max-width: min(100%, 560px);
+  margin-top: var(--spacing-md);
+  padding: 12px 16px;
+  border: 1px solid rgba(22, 163, 74, 0.22);
+  border-radius: var(--radius-full);
+  background-color: var(--success-light);
+  color: var(--success);
+  box-shadow: var(--shadow-sm);
+}
+
+.fileIcon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: var(--success);
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 900;
+}
+
+.fileText {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.fileName {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.fileMeta {
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  background-color: var(--danger-light);
+  color: var(--danger);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.errorIcon {
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
+.info {
+  margin-top: var(--spacing-md);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.info p {
+  margin: 0;
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes borderPulse {
+  from {
+    border-color: var(--primary);
+  }
+  to {
+    border-color: var(--accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .dropzone {
+    min-height: 300px;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .icon {
+    width: 68px;
+    height: 68px;
+  }
+
+  .title {
+    font-size: 1.15rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  .fileText {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}

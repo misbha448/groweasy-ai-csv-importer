@@ -1,0 +1,134 @@
+.card {
+  margin-bottom: var(--spacing-xl);
+  background:
+    linear-gradient(135deg, rgba(22, 163, 74, 0.1), rgba(255, 255, 255, 0) 42%),
+    var(--surface);
+  border-color: rgba(22, 163, 74, 0.24);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: var(--success-light);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--success);
+  margin: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge.success {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.badge.warning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--spacing-md);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.value.success {
+  color: var(--success);
+}
+
+.value.warning {
+  color: var(--warning);
+}
+
+.progressContainer {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border);
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background-color: var(--background-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--success), #16a34a);
+  border-radius: var(--radius-full);
+  transition: width 300ms ease-out;
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+
+  .value {
+    font-size: 1.125rem;
+  }
+}

@@ -1,0 +1,67 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 200ms ease-out;
+}
+
+.container {
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  max-width: 400px;
+  animation: scaleIn 300ms ease-out;
+}
+
+.message {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+}
+
+.progressContainer {
+  width: 100%;
+  margin-top: var(--spacing-md);
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--background-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #0284c7);
+  transition: width 200ms ease-out;
+  border-radius: var(--radius-full);
+}
+
+.progressText {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .container {
+    margin: var(--spacing-md);
+    max-width: 90vw;
+  }
+}
