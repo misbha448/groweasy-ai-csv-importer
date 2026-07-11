@@ -5,9 +5,18 @@
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+function getApiBase(baseURL) {
+  if (!baseURL) {
+    throw new Error('NEXT_PUBLIC_API_URL is not configured.');
+  }
+
+  const normalizedBase = baseURL.replace(/\/$/, '');
+  return normalizedBase.endsWith('/api') ? normalizedBase : `${normalizedBase}/api`;
+}
+
 class APIClient {
   constructor(baseURL = API_BASE_URL) {
-    this.baseURL = baseURL;
+    this.baseURL = getApiBase(baseURL);
     this.timeout = 30000;
   }
 

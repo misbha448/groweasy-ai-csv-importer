@@ -4,7 +4,16 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { RiRobot2Fill } from 'react-icons/ri';
 import styles from './FloatingAssistant.module.css';
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api').replace(/\/$/, '');
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
+function getApiBase() {
+  if (!API_BASE) {
+    throw new Error('NEXT_PUBLIC_API_URL is not configured.');
+  }
+
+  const normalizedBase = API_BASE.replace(/\/$/, '');
+  return normalizedBase.endsWith('/api') ? normalizedBase : `${normalizedBase}/api`;
+}
 
 const suggestions = [
   'How does AI Mapping work?',
@@ -27,7 +36,7 @@ function getTimestamp() {
 
 async function requestAssistantReply(message) {
   try {
-    const response = await fetch(`${API_BASE}/chat`, {
+    const response = await fetch(`${getApiBase()}/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message }),

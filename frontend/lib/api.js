@@ -1,9 +1,13 @@
 // Lightweight API client using fetch with timeout and retry.
-const DEFAULT_API_BASE = 'http://localhost:3001/api';
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || DEFAULT_API_BASE;
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 function getApiBase() {
-  return API_BASE.replace(/\/$/, '');
+  if (!API_BASE) {
+    throw new Error('NEXT_PUBLIC_API_URL is not configured.');
+  }
+
+  const normalizedBase = API_BASE.replace(/\/$/, '');
+  return normalizedBase.endsWith('/api') ? normalizedBase : `${normalizedBase}/api`;
 }
 
 function timeoutFetch(resource, options = {}, timeout = 30000) {
@@ -102,22 +106,9 @@ export async function uploadCSV(file, timeout = 10 * 60 * 1000) {
 }
 
 export async function processCSV(processPayload, timeout = 60000) {
-  return withRetry(async () => {
-    const res = await timeoutFetch(`${getApiBase()}/process`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(processPayload)
-    }, timeout);
-
-    if (!res.ok) {
-      const text = await res.text().catch(() => null);
-      throw buildError(res.status, res.statusText || 'Processing failed', text);
-    }
-
-    return res.json();
-  }, 2);
+  void processPayload;
+  void timeout;
+  throw new Error('CSV processing is handled by the upload endpoint.');
 }
 
 const api = { uploadCSV, processCSV, normalizeImportResponse };
